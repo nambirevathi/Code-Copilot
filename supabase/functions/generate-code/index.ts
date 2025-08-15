@@ -9,6 +9,8 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+console.log("enetered the Gemini Code creation module")
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
@@ -42,6 +44,8 @@ Please generate the code without any markdown formatting or code blocks - just t
     });
 
     const data = await response.json();
+
+    console.log("Received response ", data)
     
     if (!data.candidates || data.candidates.length === 0) {
       throw new Error('No response from Gemini API');
